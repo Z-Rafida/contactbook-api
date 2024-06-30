@@ -52,4 +52,4 @@ export const deleteById = async (req, res, next) => {
    } catch (error) {
     next (error)
    }
-};
+}
