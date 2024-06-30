@@ -25,7 +25,7 @@ export const getContacts = async (req, res, next) => {
 // get one contact by id
 export const oneContactById = async (req, res, next) => {
     try {
-        const oneContactById = await ContactModel.findById(req.body.id);
+        const oneContactById = await ContactModel.findById(req.params.id);
         res.send(oneContactById)
     } catch (error) {
         next (error)
@@ -36,7 +36,7 @@ export const oneContactById = async (req, res, next) => {
 export const updateById = async(req, res, next) => {
     try {
         const tel = req.body.number
-        const updateById = await ContactModel.findByIdAndUpdate(req.body.id, {number: tel});
+        const updateById = await ContactModel.findByIdAndUpdate(req.params.id, {number: tel});
         res.send(updateById)
     } catch (error) {
         next(error)
@@ -47,7 +47,7 @@ export const updateById = async(req, res, next) => {
 export const deleteById = async (req, res, next) => {
    try {
     const deleteContact = req.body
-    const deleteById = await ContactModel.findByIdAndDelete(req.body.id, {_id: deleteContact});
+    const deleteById = await ContactModel.findByIdAndDelete(req.params.id, {_id: deleteContact});
     res.send(deleteById)
    } catch (error) {
     next (error)
