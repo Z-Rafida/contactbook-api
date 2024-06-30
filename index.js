@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import contactRouter from "./routes/contact_route.js";
 import "dotenv/config"
 import { databaseConection } from "./config/database.js";
+// import normalize from "normalize-mongoose";
 
 // connecting to database
 // await mongoose.connect(process.env.mongo_url);
@@ -21,6 +22,8 @@ app.use(express.json());
 
 // using routes
 app.use(contactRouter);
+
+// contactSchema.plugin(normalize)
 
 // Listening to the server
 app.listen(3000, () => {
