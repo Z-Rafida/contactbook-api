@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import normalize from "normalize-mongoose";
+import { toJSON } from "@reis/mongoose-to-json";
 
 const contactSchema = new Schema({
     name : {type: String, required: true},
@@ -9,7 +9,7 @@ const contactSchema = new Schema({
 });
 
 
-contactSchema.plugin(normalize)
+contactSchema.plugin(toJSON);
 export const ContactModel = model('contact', contactSchema);
 
 
