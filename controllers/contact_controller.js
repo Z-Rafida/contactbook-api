@@ -15,7 +15,8 @@ export const addContact = async (req, res, next) => {
 // getting all contact
 export const getContacts = async (req, res, next) => {
     try {
-        const allContacts = await ContactModel.find(req.body);
+        console.log('request', req.body)
+        const allContacts = await ContactModel.find();
         res.send(allContacts)
     } catch (error) {
         next(error)        
@@ -35,7 +36,8 @@ export const oneContactById = async (req, res, next) => {
 // update one contact by id
 export const updateById = async(req, res, next) => {
     try {
-        const updateById = await ContactModel.findByIdAndUpdate(req.params.id);
+        const eMail = req.body.email
+        const updateById = await ContactModel.findByIdAndUpdate(req.params.id, {email: eMail});
         res.send(updateById)
     } catch (error) {
         next(error)
